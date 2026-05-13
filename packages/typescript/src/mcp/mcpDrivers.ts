@@ -36,7 +36,7 @@ export namespace McpDriver {
     headers?: Headers;
     headless?: boolean;
     permissions?: string[];
-    profileDir?: string;
+
   }
 
   export interface SeleniumCdpConnection {
@@ -87,13 +87,13 @@ export async function createPlaywrightDriver(
   }
 
   await ensurePlaywrightChromiumInstalled();
-  const videosDir = await artifactsStore.ensureDir("videos");
+
 
   let context: BrowserContext;
   if (profileDir) {
     context = await chromium.launchPersistentContext(profileDir, {
       headless,
-      recordVideo: { dir: videosDir },
+      
       extraHTTPHeaders: headers,
       ...(executablePath ? { executablePath } : {}),
     });
@@ -103,7 +103,7 @@ export async function createPlaywrightDriver(
       ...(executablePath ? { executablePath } : {}),
     });
     context = await browser.newContext({
-      recordVideo: { dir: videosDir },
+      
       extraHTTPHeaders: headers,
     });
   }
