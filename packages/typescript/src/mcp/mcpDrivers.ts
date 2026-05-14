@@ -35,7 +35,7 @@ export namespace McpDriver {
     executablePath?: string;
     headers?: Headers;
     headless?: boolean;
-    permissions?: string[];
+    permissions?: string[]; profileDir?: string; recordVideos?: boolean;
 
   }
 
